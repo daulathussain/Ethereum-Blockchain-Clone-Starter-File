@@ -1,0 +1,148 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #1a1a2e;
+  --secondary: #16213e;
+  --accent: #0f3460;
+  --highlight: #e94560;
+}
+
+body {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  min-height: 100vh;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a2e;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #0f3460;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #e94560;
+}
+
+/* Card styles */
+.card {
+  @apply bg-secondary/80 backdrop-blur-sm rounded-xl border border-accent/30 shadow-xl;
+}
+
+.card-header {
+  @apply px-6 py-4 border-b border-accent/30;
+}
+
+.card-body {
+  @apply p-6;
+}
+
+/* Table styles */
+.table-container {
+  @apply overflow-x-auto;
+}
+
+.data-table {
+  @apply w-full text-sm;
+}
+
+.data-table th {
+  @apply text-left text-gray-400 font-medium py-3 px-4 border-b border-accent/30;
+}
+
+.data-table td {
+  @apply py-3 px-4 border-b border-accent/20 text-gray-300;
+}
+
+.data-table tr:hover td {
+  @apply bg-accent/20;
+}
+
+/* Link styles */
+.link {
+  @apply text-blue-400 hover:text-blue-300 transition-colors;
+}
+
+.link-highlight {
+  @apply text-highlight hover:text-pink-400 transition-colors;
+}
+
+/* Badge styles */
+.badge {
+  @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+}
+
+.badge-success {
+  @apply bg-green-500/20 text-green-400;
+}
+
+.badge-error {
+  @apply bg-red-500/20 text-red-400;
+}
+
+.badge-pending {
+  @apply bg-yellow-500/20 text-yellow-400;
+}
+
+.badge-info {
+  @apply bg-blue-500/20 text-blue-400;
+}
+
+/* Stat card */
+.stat-card {
+  @apply card p-6 flex flex-col;
+}
+
+.stat-value {
+  @apply text-2xl font-bold text-white mt-2;
+}
+
+.stat-label {
+  @apply text-gray-400 text-sm;
+}
+
+/* Search input */
+.search-input {
+  @apply w-full bg-primary/50 border border-accent/50 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-highlight transition-colors;
+}
+
+/* Button styles */
+.btn {
+  @apply px-4 py-2 rounded-lg font-medium transition-all duration-200;
+}
+
+.btn-primary {
+  @apply bg-highlight hover:bg-pink-600 text-white;
+}
+
+.btn-secondary {
+  @apply bg-accent hover:bg-accent/80 text-white;
+}
+
+/* Animations */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(233, 69, 96, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(233, 69, 96, 0.5);
+  }
+}
+
+.pulse-glow {
+  animation: pulse-glow 2s infinite;
+}
+
+/* Loading skeleton */
+.skeleton {
+  @apply animate-pulse bg-accent/30 rounded;
+}
