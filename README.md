@@ -2,7 +2,7 @@
 
 ![alt text](https://www.daulathussain.com/wp-content/uploads/2026/01/Build-and-Deploy-an-Ethereum-Blockchain-Clone-from-Scratch-Chat-DApp-Block-Explorer-Faucet-Native-Token-Full-Web3-Project.jpg)
 
-- [Final Source Code]()
+- [Final Source Code](https://www.theblockchaincoders.com/sourceCode/build-and-deploy-an-ethereum-blockchain-clone-from-scratch-or-chat-dapp-block-explorer-faucet-and-native-token-or-full-web3-project)
 
 #### Setup Video
 
