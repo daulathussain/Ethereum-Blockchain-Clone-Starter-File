@@ -1,0 +1,41 @@
+# Dependencies
+node_modules
+
+# Data directories (will be created fresh or mounted as volumes)
+data/
+chaindata/
+
+# Git
+.git
+.gitignore
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# Environment (will be passed via docker-compose)
+.env
+.env.local
+.env.*.local
+
+# Documentation
+*.md
+LICENSE
+
+# Scripts (not needed in container)
+scripts/
+
+# Development
+nodemon.json
+.eslintrc*
+.prettierrc*
