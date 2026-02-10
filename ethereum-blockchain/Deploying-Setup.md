@@ -118,3 +118,9 @@ Quick Summary (TL;DR)
 
 That's it — 6 commands and your Ethereum blockchain is live on your Hostinger VPS!
 
+### troubleshooting
+
+```
+ssh-keygen -R YOUR_VPS_IP
+```
+
