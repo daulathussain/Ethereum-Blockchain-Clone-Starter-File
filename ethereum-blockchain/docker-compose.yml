@@ -1,0 +1,59 @@
+version: '3.8'
+
+services:
+  blockchain-node:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ethereum-blockchain
+    restart: unless-stopped
+    ports:
+      - "${HTTP_PORT:-8545}:8545"
+      - "${WS_PORT:-8546}:8546"
+      - "${P2P_PORT:-30303}:30303"
+    volumes:
+      # Persist blockchain data
+      - blockchain-data:/app/data
+    environment:
+      - NODE_ENV=production
+      - CHAIN_ID=${CHAIN_ID:-9292}
+      - NETWORK_NAME=${NETWORK_NAME:-TheBlockchainCoders}
+      - CURRENCY_SYMBOL=${CURRENCY_SYMBOL:-TBC}
+      - CURRENCY_NAME=${CURRENCY_NAME:-TheBlockchainCoders Token}
+      - INITIAL_DIFFICULTY=${INITIAL_DIFFICULTY:-4}
+      - BLOCK_TIME=${BLOCK_TIME:-5000}
+      - BLOCK_REWARD=${BLOCK_REWARD:-2.0}
+      - TRANSACTION_FEE=${TRANSACTION_FEE:-0.001}
+      - CONTRACT_DEPLOYMENT_FEE=${CONTRACT_DEPLOYMENT_FEE:-0.01}
+      - FAUCET_AMOUNT=${FAUCET_AMOUNT:-10.0}
+      - FAUCET_COOLDOWN=${FAUCET_COOLDOWN:-60000}
+      - GENESIS_TIMESTAMP=${GENESIS_TIMESTAMP:-1704067200000}
+      - INITIAL_SUPPLY=${INITIAL_SUPPLY:-1000000}
+      - HTTP_PORT=8545
+      - WS_PORT=8546
+      - P2P_PORT=30303
+      - MINING_ENABLED=${MINING_ENABLED:-true}
+      - MINER_REWARD_ADDRESS=${MINER_REWARD_ADDRESS}
+      - GAS_LIMIT=${GAS_LIMIT:-8000000}
+      - GAS_PRICE=${GAS_PRICE:-20000000000}
+    networks:
+      - blockchain-network
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:8545/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
+volumes:
+  blockchain-data:
+    driver: local
+
+networks:
+  blockchain-network:
+    driver: bridge
