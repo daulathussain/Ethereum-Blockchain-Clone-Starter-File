@@ -7,28 +7,23 @@ Open your terminal (on your Mac) and SSH into the VPS:
 ```
 ssh root@YOUR_VPS_IP
 Enter your root password when prompted.
-
 ```
 
 STEP 2: Install Docker & Docker Compose (on VPS)
 Copy-paste this entire block — it installs everything in one go:
 
 ```
-
 apt update && apt install -y docker.io docker-compose-v2 git
 systemctl start docker
 systemctl enable docker
-
 ```
 
 Verify Docker is working:
 
 
 ```
-
 docker --version
 docker compose version
-
 ```
 
 STEP 3: Upload Your Project to the VPS
@@ -37,20 +32,17 @@ Option A: Using scp (from your Mac, open a NEW terminal tab)
 ```
 cd /Users/YOUR_LOCATION/Documents/ethereum-blockchain
 scp -r .env Dockerfile docker-compose.yml package.json package-lock.json src/ scripts/ root@YOUR_VPS_IP:/root/ethereum-blockchain/
-
 ```
 
 STEP 4: Open Firewall Ports (on VPS)
 Back in your VPS SSH session:
 
 ```
-
 ufw allow 22
 ufw allow 8545
 ufw allow 8546
 ufw allow 30303
 ufw --force enable
-
 ```
 
 This opens:
@@ -61,10 +53,8 @@ This opens:
 STEP 5: Build & Start the Blockchain (on VPS)
 
 ```
-
 cd /root/ethereum-blockchain
 docker compose up -d --build
-
 ```
 
 This will:
@@ -75,7 +65,6 @@ STEP 6: Verify It's Running
 
 ```
 docker compose ps
-
 ```
 
 You should see the container as running (healthy).
@@ -85,7 +74,6 @@ Check the logs:
 
 ```
 docker compose logs -f
-
 ```
 
 (Press Ctrl+C to exit logs)
@@ -93,9 +81,7 @@ docker compose logs -f
 Test the API:
 
 ```
-
 curl http://localhost:8545/health
-
 ```
 
 STEP 7: Access From Anywhere
@@ -125,7 +111,7 @@ Quick Summary (TL;DR)
 
 1. ssh root@YOUR_VPS_IP
 2. apt update && apt install -y docker.io docker-compose-v2 git
-3. (from Mac) rsync -avz --exclude='node_modules' --exclude='.DS_Store' /Users/daulathussain/Documents/ethereum-blockchain/ root@YOUR_VPS_IP:/root/ethereum-blockchain/
+3. (from Mac) rsync -avz --exclude='node_modules' --exclude='.DS_Store' /Users/YOUR_LOCATION/Documents/ethereum-blockchain/ root@YOUR_VPS_IP:/root/ethereum-blockchain/
 4. (back on VPS) ufw allow 22 && ufw allow 8545 && ufw allow 8546 && ufw allow 30303 && ufw --force enable
 5. cd /root/ethereum-blockchain && docker compose up -d --build
 6. curl http://YOUR_VPS_IP:8545/health
