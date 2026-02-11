@@ -8,8 +8,8 @@ https://clients.domainracer.com/aff.php?aff=28826&ref=401
 
 ```
 Domain: theblockchaincodersnode.xyz (bought from DomainRacer)
-VPS IP: 72.62.228.207
-SSH: ssh root@72.62.228.207
+VPS IP: YOUR_VPS_IP
+SSH: ssh root@YOUR_VPS_IP
 ```
 
 ---
@@ -24,8 +24,8 @@ SSH: ssh root@72.62.228.207
 6. Add these 2 records:
 
 ```
-Type: A | Name: @   | Value: 72.62.228.207 | TTL: 3600
-Type: A | Name: www | Value: 72.62.228.207 | TTL: 3600
+Type: A | Name: @   | Value: YOUR_VPS_IP | TTL: 3600
+Type: A | Name: www | Value: YOUR_VPS_IP | TTL: 3600
 ```
 
 7. Click Save
@@ -41,7 +41,7 @@ Open your Mac terminal and run each step one by one.
 ### Step 1 — Connect to your VPS
 
 ```bash
-ssh root@72.62.228.207
+ssh root@YOUR_VPS_IP
 ```
 
 Enter your password when asked.
@@ -211,16 +211,3 @@ certbot renew --force-renewal
 ```
 
 ---
-
-## QUICK SUMMARY (TL;DR)
-
-1. DomainRacer DNS — Add A record `@` and `www` pointing to `72.62.228.207`
-2. VPS — `ufw allow 80 && ufw allow 443 && ufw reload`
-3. VPS — `apt install -y nginx`
-4. VPS — Create Nginx config with `nano /etc/nginx/sites-available/theblockchaincodersnode.xyz`
-5. VPS — `ln -s /etc/nginx/sites-available/theblockchaincodersnode.xyz /etc/nginx/sites-enabled/`
-6. VPS — `nginx -t && systemctl restart nginx`
-7. VPS — `apt install -y certbot python3-certbot-nginx`
-8. VPS — `certbot --nginx -d theblockchaincodersnode.xyz -d www.theblockchaincodersnode.xyz`
-9. VPS — `certbot renew --dry-run`
-10. Test — `curl https://theblockchaincodersnode.xyz/health`
