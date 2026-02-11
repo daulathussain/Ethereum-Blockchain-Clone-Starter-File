@@ -1,3 +1,11 @@
+
+### GET 75% OFFF HOSTINGER VPS SERVER
+
+```
+url: https://www.hostg.xyz/aff_c?offer_id=6&aff_id=139422
+```
+
+
 Step-by-Step: Deploy to Hostinger VPS
 STEP 1: Connect to Your VPS
 Open your terminal (on your Mac) and SSH into the VPS:
